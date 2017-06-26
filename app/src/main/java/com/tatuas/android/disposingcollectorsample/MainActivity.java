@@ -6,9 +6,11 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 
 import com.ncapdevi.fragnav.FragNavController;
+import com.ncapdevi.fragnav.FragNavTransactionOptions;
 import com.tatuas.android.disposingcollectorsample.common.DisposingActivity;
 
 import java.lang.annotation.Retention;
@@ -71,6 +73,8 @@ public class MainActivity extends DisposingActivity {
                 throw new IllegalStateException("Need to send an index that we know");
             }
         }, 3);
+        builder.defaultTransactionOptions(FragNavTransactionOptions.newBuilder()
+                .transition(FragmentTransaction.TRANSIT_FRAGMENT_FADE).build());
         fragNavController = builder.build();
     }
 
